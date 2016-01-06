@@ -1,72 +1,49 @@
-# Introduction
-
-This is a i18next backend to be used node.js. It will load resources from filesystem. Right now it supports following filetypes:
+# i18next-sync-fs-backend
+i18next backend which loads resources from filesystem synchronously, in contrast to [i18next-node-fs-backend](https://github.com/i18next/i18next-node-fs-backend) which is async (this is a fork). This avoids having your code wrapped in a `i18next.init()`-callback. Supported filetypes:
 
 - .json
 - .json5
 
-# Getting started
+## Install
 
-Source can be loaded via [npm](https://www.npmjs.com/package/i18next-node-fs-backend).
-
-```
-$ npm install i18next-node-fs-backend
+```sh
+npm install i18next-sync-fs-backend
 ```
 
-Wiring up:
+## Usage
 
 ```js
-var i18next = require('i18next');
-var Backend = require('i18next-node-fs-backend');
+var i18n = require('i18next');
+var Backend = require('i18next-sync-fs-backend');
 
-i18next
+i18n
   .use(Backend)
-  .init(i18nextOptions);
+  .init(); // no callback needed
+
+// use at once
+console.log(i18n.t('key'));
 ```
 
-As with all modules you can either pass the constructor function (class) to the i18next.use or a concrete instance.
 
-## Backend Options
-
-```js
-{
-  // path where resources get loaded from
-  loadPath: '/locales/{{lng}}/{{ns}}.json',
-
-  // path to post missing resources
-  addPath: '/locales/{{lng}}/{{ns}}.missing.json',
-
-  // jsonIndent to use when storing json files
-  jsonIndent: 2
-}
-```
-
-Options can be passed in:
-
-**preferred** - by setting options.backend in i18next.init:
+## Options
 
 ```js
-var i18next = require('i18next');
-var Backend = require('i18next-node-fs-backend');
+var i18n = require('i18next');
+var Backend = require('i18next-sync-fs-backend');
 
-i18next
+i18n
   .use(Backend)
   .init({
-    backend: options
+    // this is the defaults
+    backend: {
+      // path where resources get loaded from
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
+
+      // path to post missing resources
+      addPath: '/locales/{{lng}}/{{ns}}.missing.json',
+
+      // jsonIndent to use when storing json files
+      jsonIndent: 2
+    }
   });
-```
-
-on construction:
-
-```js
-var Backend = require('i18next-node-fs-backend');
-var backend = new Backend(null, options);
-```
-
-by calling init:
-
-```js
-var Backend = require('i18next-node-fs-backend');
-var backend = new Backend();
-backend.init(options);
 ```
