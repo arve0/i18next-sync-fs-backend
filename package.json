@@ -1,6 +1,6 @@
 {
   "name": "i18next-sync-fs-backend",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "i18next backend which loads resources from filesystem synchronously",
   "main": "./lib/index.js",
   "keywords": [
