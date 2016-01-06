@@ -6,29 +6,29 @@ var Interpolator = require('i18next/lib/Interpolator');
 var test3Save = 0;
 
 var fsMock = {
-  readFile: function (path, encoding, cb) {
-    if (path.indexOf('test.json') > -1) return cb(null, '{"key": "passing"}');
-    if (path.indexOf('test3.missing.json') > -1 && test3Save > 0) return cb(null, JSON.stringify({ key1: '1', key2: '2' }, null, 2));
+  readFileSync: function (path, encoding) {
+    if (path.indexOf('test.json') !== -1)
+      return '{"key": "passing"}';
+    if (path.indexOf('test3.missing.json') !== -1 && test3Save > 0)
+      return JSON.stringify({ key1: '1', key2: '2' }, null, 2);
 
-    cb(null, '{}');
+    return '{}';
   },
 
-  writeFile: function(path, data, cb) {
-    if (path.indexOf('test.missing.json') > -1) {
+  writeFileSync: function(path, data) {
+    if (path.indexOf('test.missing.json') !== -1) {
       expect(data).to.be.eql(JSON.stringify({some: { key: 'myDefault' }}, null, 2));
     }
-    else if (path.indexOf('test2.missing.json') > -1) {
+    else if (path.indexOf('test2.missing.json') !== -1) {
       expect(data).to.be.eql(JSON.stringify({ key1: '1', key2: '2', key3: '3', key4: '4' }, null, 2));
     }
-    else if (path.indexOf('test3.missing.json') > -1 && test3Save === 0) {
+    else if (path.indexOf('test3.missing.json') !== -1 && test3Save === 0) {
       test3Save = test3Save + 1;
       expect(data).to.be.eql(JSON.stringify({ key1: '1', key2: '2' }, null, 2));
     }
-    else if (path.indexOf('test3.missing.json') > -1 && test3Save > 0) {
+    else if (path.indexOf('test3.missing.json') !== -1 && test3Save > 0) {
       expect(data).to.be.eql(JSON.stringify({ key1: '1', key2: '2', key3: '3', key4: '4' }, null, 2));
     }
-
-    cb(null);
   }
 };
 
