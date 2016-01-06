@@ -29,7 +29,7 @@
     "build": "gulp",
     "prepublish": "npm run test",
     "postpublish": "git push && git push --tags",
-    "test": "gulp && gulp eslint && mocha"
+    "test": "gulp babel eslint && mocha"
   },
   "author": "Arve Seljebu",
   "license": "MIT"

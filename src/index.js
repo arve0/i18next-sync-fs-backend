@@ -16,7 +16,7 @@ function readFile(filename, callback) {
   try {
     data = fs.readFileSync(filename, 'utf8');
   } catch(e) {
-    return cb(e);
+    return callback(e);
   }
   let result;
   try {
@@ -88,11 +88,8 @@ class Backend {
           utils.setPath(resources, missing.key.split(this.coreOptions.keySeparator || '.'), missing.fallbackValue);
         });
 
-        try {
-          fs.writeFileSync(filename, JSON.stringify(resources, null, this.options.jsonIndent));
-        } catch(e) {
-          return cb(e);
-        }
+        fs.writeFileSync(filename, JSON.stringify(resources, null, this.options.jsonIndent));
+
         // unlock
         utils.setPath(this.queuedWrites, ['locks', lng, namespace], false);
 

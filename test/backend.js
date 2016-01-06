@@ -54,7 +54,7 @@ describe('backend', function() {
 
   it('read', function(done) {
     backend.read('en', 'test', function(err, data) {
-      expect(err).to.be.not.ok;
+      expect(!err).to.be.ok;
       expect(data).to.eql({key: 'passing'});
       done();
     });

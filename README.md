@@ -18,7 +18,9 @@ var Backend = require('i18next-sync-fs-backend');
 
 i18n
   .use(Backend)
-  .init(); // no callback needed
+  .init({}, function(err){
+    // handle errors
+  });
 
 // use at once
 console.log(i18n.t('key'));
