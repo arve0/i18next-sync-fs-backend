@@ -1,14 +1,14 @@
 {
-  "name": "i18next-node-fs-backend",
-  "version": "0.0.6",
-  "description": "node.js backend layer for i18next using fs module to load resources from filesystem",
+  "name": "i18next-sync-fs-backend",
+  "version": "0.0.1",
+  "description": "i18next backend which loads resources from filesystem synchronously",
   "main": "./lib/index.js",
   "keywords": [
     "i18next",
     "i18next-backend"
   ],
-  "homepage": "https://github.com/i18next/i18next-node-fs-backend",
-  "bugs": "https://github.com/i18next/i18next-node-fs-backend/issues",
+  "homepage": "https://github.com/arve0/i18next-sync-fs-backend",
+  "bugs": "https://github.com/arve0/i18next-sync-fs-backend/issues",
   "dependencies": {
     "json5": "0.4.0"
   },
@@ -31,6 +31,6 @@
     "postpublish": "git push && git push --tags",
     "test": "gulp && gulp eslint && mocha"
   },
-  "author": "Jan Mühlemann <jan.muehlemann@gmail.com> (https://github.com/jamuhl)",
+  "author": "Arve Seljebu",
   "license": "MIT"
 }
