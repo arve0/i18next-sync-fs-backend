@@ -18,7 +18,11 @@ var Backend = require('i18next-sync-fs-backend');
 
 i18n
   .use(Backend)
-  .init({}, function(err){
+  .init({
+    // this option triggers sync init of i18next
+    // required since i18next 2.5
+    initImmediate: false
+  }, function(err){
     // handle errors
   });
 
@@ -36,6 +40,7 @@ var Backend = require('i18next-sync-fs-backend');
 i18n
   .use(Backend)
   .init({
+    initImmediate: false,
     // this is the defaults
     backend: {
       // path where resources get loaded from
