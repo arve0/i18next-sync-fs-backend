@@ -8,14 +8,18 @@ var test3Save = 0;
 var test4Save = 0;
 
 var fsMock = {
-  readFile: function (path, encoding, cb) {
-    if (path.indexOf('test.json') > -1) return cb(null, '{"key": "passing"}');
-    if (path.indexOf('test3.missing.json') > -1 && test3Save > 0) return cb(null, JSON.stringify({ key1: '1', key2: '2' }, null, 2));
+  readFileSync: function (path, encoding) {
+    if (path.indexOf('test.json') > -1) {
+      return '{"key": "passing"}';
+    }
+    if (path.indexOf('test3.missing.json') > -1 && test3Save > 0) {
+      return JSON.stringify({ key1: '1', key2: '2' }, null, 2);
+    }
 
-    cb(null, '{}');
+    return '{}';
   },
 
-  writeFile: function(path, data, cb) {
+  writeFileSync: function(path, data) {
     if (path.indexOf('test.missing.json') > -1) {
       expect(data).to.be.eql(JSON.stringify({some: { key: 'myDefault' }}, null, 2));
     }
@@ -33,8 +37,6 @@ var fsMock = {
       test4Save = test4Save + 1;
       expect(data).to.be.eql(JSON.stringify({ key1: '1', key2: '2', key3: '3', key4: '4' }, null, 2));
     }
-
-    cb(null);
   }
 };
 
@@ -44,7 +46,9 @@ describe('backend', function() {
   var backend;
 
   before(function() {
-    mockery.enable();
+    mockery.enable({
+      warnOnUnregistered: false
+    });
     mockery.registerMock('fs', fsMock);
 
     Backend = require('../lib').default;

@@ -30,30 +30,32 @@ function readFile(filename, callback) {
       callback(err);
     }
   } else {
-    fs.readFile(filename, 'utf8', function(err, data) {
-      if (err) {
-        callback(err);
-      } else {
-        try {
-          data = data.replace(/^\uFEFF/, '');
-          switch(extension) {
-            case '.json5':
-              result = JSON5.parse(data);
-              break;
-            case '.yml':
-            case '.yaml':
-              result = YAML.safeLoad(data);
-              break;
-            default:
-              result = JSON.parse(data);
-          }
-        } catch (err) {
-          err.message = 'error parsing ' + filename + ': ' + err.message;
-          return callback(err);
-        }
-        callback(null, result);
+    let data;
+
+    try {
+      data = fs.readFileSync(filename, 'utf8');
+    } catch (err) {
+      return callback(err);
+    }
+
+    try {
+      data = data.replace(/^\uFEFF/, '');
+      switch (extension) {
+        case '.json5':
+          result = JSON5.parse(data);
+          break;
+        case '.yml':
+        case '.yaml':
+          result = YAML.safeLoad(data);
+          break;
+        default:
+          result = JSON.parse(data);
       }
-    });
+    } catch (err) {
+      err.message = 'error parsing ' + filename + ': ' + err.message;
+      return callback(err);
+    }
+    callback(null, result);
   }
 }
 
@@ -129,17 +131,17 @@ class Backend {
           utils.setPath(resources, missing.key.split(this.coreOptions.keySeparator || '.'), missing.fallbackValue);
         });
 
-        fs.writeFile(filename, JSON.stringify(resources, null, this.options.jsonIndent), (err) => {
-          // unlock
-          utils.setPath(this.queuedWrites, ['locks', lng, namespace], false);
+        fs.writeFileSync(filename, JSON.stringify(resources, null, this.options.jsonIndent));
 
-          missings.forEach((missing) => {
-            if (missing.callback) missing.callback();
-          });
+        // unlock
+        utils.setPath(this.queuedWrites, ['locks', lng, namespace], false);
 
-          // rerun
-          this.debouncedWrite();
+        missings.forEach((missing) => {
+          if (missing.callback) missing.callback();
         });
+
+        // rerun
+        this.debouncedWrite();
       });
     }
   }
