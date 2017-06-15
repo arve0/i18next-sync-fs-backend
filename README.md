@@ -1,9 +1,8 @@
 # i18next-node-fs-sync-backend
 
-[![Travis](https://img.shields.io/travis/i18next/i18next-node-fs-backend/master.svg?style=flat-square)](https://travis-ci.org/i18next/i18next-node-fs-backend)
-[![Coveralls](https://img.shields.io/coveralls/i18next/i18next-node-fs-backend/master.svg?style=flat-square)](https://coveralls.io/github/i18next/i18next-node-fs-backend)
-[![npm version](https://img.shields.io/npm/v/i18next-node-fs-backend.svg?style=flat-square)](https://www.npmjs.com/package/i18next-node-fs-backend)
-[![David](https://img.shields.io/david/i18next/i18next-node-fs-backend.svg?style=flat-square)](https://david-dm.org/i18next/i18next-node-fs-backend)
+[![Travis](https://img.shields.io/travis/sallar/i18next-node-fs-sync-backend/master.svg?style=flat-square)](https://travis-ci.org/sallar/i18next-node-fs-sync-backend)
+[![CodeCov](https://img.shields.io/codecov/c/github/sallar/i18next-node-fs-sync-backend.svg?style=flat-square)](https://codecov.io/gh/sallar/i18next-node-fs-sync-backend)
+[![npm version](https://img.shields.io/npm/v/i18next-node-fs-sync-backend.svg?style=flat-square)](https://www.npmjs.com/package/i18next-node-fs-sync-backend)
 
 This is a fork of the official i18next fs backend to be used node.js. It will load resources **synchronously** from filesystem. Right now it supports following filetypes:
 
