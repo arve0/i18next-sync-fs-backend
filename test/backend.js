@@ -1,14 +1,14 @@
-var mockery = require('mockery');
-var expect = require('chai').expect;
-var path = require('path');
+const mockery = require('mockery');
+const expect = require('chai').expect;
+const path = require('path');
 
-var Interpolator = require('i18next/dist/commonjs/Interpolator').default;
+const Interpolator = require('i18next/dist/commonjs/Interpolator').default;
 
-var test3Save = 0;
-var test4Save = 0;
+let test3Save = 0;
+let test4Save = 0;
 
-var fsMock = {
-  readFileSync: function (path, encoding) {
+const fsMock = {
+  readFileSync: function(path, encoding) {
     if (path.indexOf('test.json') > -1) {
       return '{"key": "passing"}';
     }
@@ -42,8 +42,8 @@ var fsMock = {
 
 
 describe('backend', function() {
-  var Backend;
-  var backend;
+  let Backend;
+  let backend;
 
   before(function() {
     mockery.enable({

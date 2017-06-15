@@ -1,14 +1,14 @@
 {
-  "name": "i18next-node-fs-backend",
+  "name": "i18next-node-fs-sync-backend",
   "version": "1.0.0",
-  "description": "node.js backend layer for i18next using fs module to load resources from filesystem",
+  "description": "node.js backend layer for i18next using fs module to load resources synchronously from filesystem",
   "main": "./index.js",
   "keywords": [
     "i18next",
     "i18next-backend"
   ],
-  "homepage": "https://github.com/i18next/i18next-node-fs-backend",
-  "bugs": "https://github.com/i18next/i18next-node-fs-backend/issues",
+  "homepage": "https://github.com/sallar/i18next-node-fs-sync-backend",
+  "bugs": "https://github.com/sallar/i18next-node-fs-sync-backend/issues",
   "dependencies": {
     "js-yaml": "3.5.4",
     "json5": "0.5.0"
@@ -31,12 +31,12 @@
     "yargs": "4.3.2"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "npm run build && mocha",
     "transpile": "babel src -d lib",
     "build": "npm run transpile",
     "version": "npm run build",
     "postversion": "git push && git push --tags && rm -rf build/temp"
   },
-  "author": "Jan Mühlemann <jan.muehlemann@gmail.com> (https://github.com/jamuhl)",
+  "author": "Sallar Kabioli <sallar.kaboli@gmail.com> (https://github.com/sallar)",
   "license": "MIT"
 }
