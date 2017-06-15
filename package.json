@@ -10,6 +10,7 @@
   "homepage": "https://github.com/sallar/i18next-node-fs-sync-backend",
   "bugs": "https://github.com/sallar/i18next-node-fs-sync-backend/issues",
   "dependencies": {
+    "codecov": "^2.2.0",
     "js-yaml": "3.5.4",
     "json5": "0.5.0"
   },
@@ -20,7 +21,6 @@
     "babel-preset-es2015": "6.3.13",
     "babel-preset-stage-0": "6.5.0",
     "chai": "^3.4.1",
-    "coveralls": "2.11.6",
     "eslint": "2.4.0",
     "i18next": "2.3.5",
     "istanbul": "0.4.1",
@@ -35,7 +35,8 @@
     "transpile": "babel src -d lib",
     "build": "npm run transpile",
     "version": "npm run build",
-    "postversion": "git push && git push --tags && rm -rf build/temp"
+    "postversion": "git push && git push --tags && rm -rf build/temp",
+    "coverage": "NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && codecov"
   },
   "author": "Sallar Kabioli <sallar.kaboli@gmail.com> (https://github.com/sallar)",
   "license": "MIT"
