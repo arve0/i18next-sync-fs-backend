@@ -1,5 +1,5 @@
 {
-  "name": "i18next-node-fs-sync-backend",
+  "name": "i18next-sync-fs-backend",
   "version": "1.0.0",
   "description": "node.js backend layer for i18next using fs module to load resources synchronously from filesystem",
   "main": "./index.js",
@@ -7,8 +7,8 @@
     "i18next",
     "i18next-backend"
   ],
-  "homepage": "https://github.com/sallar/i18next-node-fs-sync-backend",
-  "bugs": "https://github.com/sallar/i18next-node-fs-sync-backend/issues",
+  "homepage": "https://github.com/sallar/i18next-sync-fs-backend",
+  "bugs": "https://github.com/sallar/i18next-sync-fs-backend/issues",
   "dependencies": {
     "codecov": "^2.2.0",
     "js-yaml": "3.5.4",
