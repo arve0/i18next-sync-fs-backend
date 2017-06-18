@@ -1,8 +1,8 @@
-# i18next-node-fs-sync-backend
+# i18next-sync-fs-backend
 
-[![Travis](https://img.shields.io/travis/sallar/i18next-node-fs-sync-backend/master.svg?style=flat-square)](https://travis-ci.org/sallar/i18next-node-fs-sync-backend)
-[![CodeCov](https://img.shields.io/codecov/c/github/sallar/i18next-node-fs-sync-backend.svg?style=flat-square)](https://codecov.io/gh/sallar/i18next-node-fs-sync-backend)
-[![npm version](https://img.shields.io/npm/v/i18next-node-fs-sync-backend.svg?style=flat-square)](https://www.npmjs.com/package/i18next-node-fs-sync-backend)
+[![Travis](https://img.shields.io/travis/sallar/i18next-sync-fs-backend/master.svg?style=flat-square)](https://travis-ci.org/sallar/i18next-sync-fs-backend)
+[![CodeCov](https://img.shields.io/codecov/c/github/sallar/i18next-sync-fs-backend.svg?style=flat-square)](https://codecov.io/gh/sallar/i18next-sync-fs-backend)
+[![npm version](https://img.shields.io/npm/v/i18next-sync-fs-backend.svg?style=flat-square)](https://www.npmjs.com/package/i18next-sync-fs-backend)
 
 This is a fork of the official i18next fs backend to be used node.js. It will load resources **synchronously** from filesystem. Right now it supports following filetypes:
 
@@ -12,19 +12,21 @@ This is a fork of the official i18next fs backend to be used node.js. It will lo
 
 ⚠️ **This is a fork** of the [official fs backend](https://github.com/i18next/i18next-node-fs-backend) and works syncronously.
 
+✨ Thanks to [@arve0](https://github.com/arve0) for transferring the Github repo to me. His old code is available in `legacy` branch.
+
 # Getting started
 
-Source can be loaded via [npm](https://www.npmjs.com/package/i18next-node-fs-sync-backend).
+Source can be loaded via [npm](https://www.npmjs.com/package/i18next-sync-fs-backend).
 
 ```
-$ npm install i18next-node-fs-sync-backend
+$ npm install i18next-sync-fs-backend
 ```
 
 Wiring up:
 
 ```js
 import i18next from 'i18next';
-import Backend from 'i18next-node-fs-sync-backend';
+import Backend from 'i18next-sync-fs-backend';
 
 i18next
   .use(Backend)
@@ -64,7 +66,7 @@ Options can be passed in:
 
 ```js
 import i18next from 'i18next';
-import Backend from 'i18next-node-fs-sync-backend';
+import Backend from 'i18next-sync-fs-backend';
 
 i18next
   .use(Backend)
@@ -79,14 +81,14 @@ i18next
 on construction:
 
 ```js
-import Backend from 'i18next-node-fs-sync-backend';
+import Backend from 'i18next-sync-fs-backend';
 const backend = new Backend(null, options);
 ```
 
 by calling `init`:
 
 ```js
-import Backend from 'i18next-node-fs-sync-backend';
+import Backend from 'i18next-sync-fs-backend';
 const backend = new Backend();
 backend.init(options);
 ```
