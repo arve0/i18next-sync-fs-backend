@@ -77,7 +77,9 @@ class Backend {
   }
 
   read(language, namespace, callback) {
-    let filename = this.services.interpolator.interpolate(this.options.loadPath, { lng: language, ns: namespace });
+    const { loadPath } = this.options;
+    const filePath = typeof loadPath === 'function' ? loadPath(language, namespace) : loadPath;
+    const filename = this.services.interpolator.interpolate(filePath, { lng: language, ns: namespace });
 
     readFile(filename, (err, resources) => {
       if (err) return callback(err, false); // no retry
