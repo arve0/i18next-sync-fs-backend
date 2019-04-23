@@ -10,7 +10,7 @@
   "homepage": "https://github.com/sallar/i18next-sync-fs-backend",
   "bugs": "https://github.com/sallar/i18next-sync-fs-backend/issues",
   "dependencies": {
-    "js-yaml": "3.5.4",
+    "js-yaml": "3.13.1",
     "json5": "0.5.0"
   },
   "devDependencies": {
