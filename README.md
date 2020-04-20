@@ -1,3 +1,7 @@
+# :warning: DEPRECATED.
+
+[Use the official backend instead](https://github.com/i18next/i18next-fs-backend#if-set-i18next-initimmediate-option-to-false-it-will-load-the-files-synchronously)
+
 # i18next-sync-fs-backend
 
 [![Travis](https://img.shields.io/travis/sallar/i18next-sync-fs-backend/master.svg?style=flat-square)](https://travis-ci.org/sallar/i18next-sync-fs-backend)
